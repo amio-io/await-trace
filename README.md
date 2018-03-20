@@ -35,7 +35,7 @@ async function sideEffect(dummy){
 
 ### Explanation
 
-- `E()` is an alias to `Error()`.
+- `E()` is an alias to `Error()`. Module exports `Err()` too.
 - The lazy initialization of error via `() => E()` is necessary in order **not** to degrade performance. 
 - NodeJS builds stack trace from the place where an error is created. That's why you have to pass `E()` in every single `me()`
 
