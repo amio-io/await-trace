@@ -36,6 +36,10 @@ async function sideEffect(dummy){
 - NodeJS builds stack trace from the place where an error is created. That's why you have to pass `E()` in every single `me()`
 
 
+### Caveats
+
+I don't know how to make it work with `setTimeout()`. With promises you'll be fine.
+
 ### Invitation
 
 NodeJS is great for development and this is just a pain in the ass in otherwise wonderful ecosystem!
