@@ -8,6 +8,10 @@ I hope that NodeJS team will create a native solution.
 It may be ugly but you can refactor your codebase quickly to use this module AND also you can quickly refactor it back
 to the original `async/await`.
 
+### Installation
+
+`npm install await-trace --save`
+
 ### Usage
 
 Replace your `await promise` with `await me(() => E(), promise)`. For example, convert this:
