@@ -42,7 +42,9 @@ async function sideEffect(dummy){
 
 ### Caveats
 
-I don't know how to make it work with `setTimeout()`. With promises you'll be fine.
+- I don't know how to make it work with `setTimeout()`. With promises you'll be fine.
+- For stack traces longer than 10 lines use `--stack-trace-limit` flag, e.g.:
+  ```node --stack-trace-limit=100 index.js```
 
 ### Invitation
 
