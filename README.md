@@ -28,8 +28,8 @@ to this:
 const {me, E} = require('await-trace')
 
 async function sideEffect(dummy){
-  const data = await await me(() => E(), fetchData())
-  return await await me(() => E(), updateData(data))
+  const data = await me(() => E(), fetchData())
+  return await me(() => E(), updateData(data))
 }
 ```
 
