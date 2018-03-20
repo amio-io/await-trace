@@ -1,2 +1,44 @@
 # await-trace
 (Ugly) solution for complete stack traces in async/await. Production ready.
+
+We needed complete stack traces that has a very low performance overhead. 
+This mini-module is created as a response to the closed issue [Missing stack traces from async functions after the first await](https://github.com/nodejs/node/issues/11865).
+I hope that NodeJS team will create a native solution.
+
+It may be ugly but you can refactor your codebase quickly to use this module AND also you can quickly refactor it back
+to the original `async/await`.
+
+### Usage
+
+Replace your `await promise` with `await me(() => E(), promise)`. For example, convert this:
+
+```
+async function sideEffect(dummy){
+  const data = await fetchData()
+  return await updateData(data)
+}
+```
+
+to this:
+```
+const {me, E} = require('await-trace')
+
+async function sideEffect(dummy){
+  const data = await await me(() => E(), fetchData())
+  return await await me(() => E(), updateData(data))
+}
+```
+
+### Explanation
+
+- `E()` is an alias to `Error()`.
+- The lazy initialization of error via `() => E()` is necessary in order **not** to degrade performance. 
+- NodeJS builds stack trace from the place where an error is created. That's why you have to pass `E()` in every single `me()`
+
+
+### Invitation
+
+NodeJS is great for development and this is just a pain in the ass in otherwise wonderful ecosystem!
+We'll be glad if you find any improvements (make a PR. ;) or if you offer a better solution than this one.
+ 
+
