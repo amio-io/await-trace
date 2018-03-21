@@ -33,6 +33,16 @@ async function sideEffect(dummy){
 }
 ```
 
+### Quick refactoring
+
+If you want to quickly refactor your code, I recommend you to use a replace tool that accepts regex patterns.
+I have done my refactoring using Jetbrains IDEs: 
+
+![Replace with regex](./docs/regex-replace.png)
+
+**Find:** `await\s(.*)(\)$)`
+**Replace:** `await me(() => E(), $1$2)` 
+
 ### Explanation
 
 - `E()` is an alias to `Error()`. Module exports `Err()` too.
