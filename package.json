@@ -1,6 +1,6 @@
 {
   "name": "await-trace",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "(Ugly) solution for complete stack traces in async/await. Production ready.",
   "main": "./src/main.js",
   "repository": {
