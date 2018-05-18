@@ -3,7 +3,7 @@
  * @param {Promise} promise to be wrapped in try/catch
  * @returns {Promise<*>}
  */
-async function catchMe(createError, promise) {
+async function nab(createError, promise) {
   if (!(createError instanceof Function)) throw new Error("param 'createError' must be a function")
   if (!promise || !(promise.then instanceof Function)) throw new Error("param 'promise' must be a promise ;-)")
 
@@ -17,7 +17,8 @@ async function catchMe(createError, promise) {
 }
 
 module.exports = {
-  me: catchMe,
+  me: nab,
+  nab: nab,
   E: Error,
   Err: Error
 }

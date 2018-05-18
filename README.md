@@ -14,7 +14,7 @@ to the original `async/await`.
 
 ### Usage
 
-Replace your `await promise` with `await me(() => E(), promise)`. For example, convert this:
+Replace your `await promise` with `await nab(() => E(), promise)`. For example, convert this:
 
 ```
 async function sideEffect(dummy){
@@ -25,11 +25,11 @@ async function sideEffect(dummy){
 
 to this:
 ```
-const {me, E} = require('await-trace')
+const {nab, E} = require('await-trace')
 
 async function sideEffect(dummy){
-  const data = await me(() => E(), fetchData())
-  return await me(() => E(), updateData(data))
+  const data = await nab(() => E(), fetchData())
+  return await nab(() => E(), updateData(data))
 }
 ```
 
@@ -41,13 +41,13 @@ I have done my refactoring using Jetbrains IDEs:
 ![Replace with regex](./docs/regex-replace.png)
 
 **Find:** `await\s(.*)(\)$)`
-**Replace:** `await me(() => E(), $1$2)` 
+**Replace:** `await nab(() => E(), $1$2)` 
 
 ### Explanation
 
 - `E()` is an alias to `Error()`. Module exports `Err()` too.
 - The lazy initialization of error via `() => E()` is necessary in order **not** to degrade performance. 
-- NodeJS builds stack trace from the place where an error is created. That's why you have to pass `E()` in every single `me()`
+- NodeJS builds stack trace from the place where an error is created. That's why you have to pass `E()` in every single `nab()`
 
 
 ### Caveats
