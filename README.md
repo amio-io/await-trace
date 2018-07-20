@@ -1,4 +1,6 @@
 # await-trace
+[![npm version](https://badge.fury.io/js/await-trace.svg)](https://badge.fury.io/js/await-trace) 
+
 (Ugly) solution for complete stack traces in async/await. Production ready.
 
 We needed complete stack traces that has a very low performance overhead. 
